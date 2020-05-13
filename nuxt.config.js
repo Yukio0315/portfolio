@@ -23,7 +23,7 @@ export default {
   /*
    ** Global CSS
    */
-  css: [],
+  css: ['normalize.css'],
   /*
    ** Plugins to load before mounting the App
    */
@@ -34,8 +34,14 @@ export default {
   buildModules: [
     '@nuxt/typescript-build',
     // Doc: https://github.com/nuxt-community/stylelint-module
-    '@nuxtjs/stylelint-module'
+    '@nuxtjs/stylelint-module',
+    '@nuxtjs/fontawesome'
   ],
+  fontawesome: {
+    icons: {
+      solid: ['faBars']
+    }
+  },
   /*
    ** Nuxt.js modules
    */
@@ -51,6 +57,5 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {}
   }
 }
