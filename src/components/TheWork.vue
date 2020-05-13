@@ -1,6 +1,8 @@
 <template>
   <section>
-    <h2>Work</h2>
+    <h2>Works</h2>
+    <p>|</p>
+    <Project />
   </section>
 </template>
 

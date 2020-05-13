@@ -1,9 +1,9 @@
 <template>
   <main class="main">
-    <TheTop v-if="isNow === menu[0].name" />
-    <TheWork v-if="isNow === menu[1].name" />
-    <TheProfile v-if="isNow === menu[2].name" />
-    <TheBlog v-if="isNow === menu[3].name" />
+    <TheTop v-if="now === menu[0].name" />
+    <TheWork v-if="now === menu[1].name" />
+    <TheProfile v-if="now === menu[2].name" />
+    <TheBlog v-if="now === menu[3].name" />
     <TheSideMenu :menu="menu" @choose-menu="chooseMenu" />
   </main>
 </template>
@@ -27,10 +27,10 @@ export default class MyPage extends Vue {
     { id: 4, name: 'BLOG' }
   ]
 
-  isNow = this.menu[0].name
+  now = this.menu[0].name
 
   chooseMenu(item: string) {
-    this.isNow = item
+    this.now = item
   }
 }
 </script>

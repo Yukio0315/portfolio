@@ -1,5 +1,13 @@
 export default {
   mode: 'universal',
+  srcDir: 'src/',
+  env: {
+    CTF_PERSON_ID: process.env.CTF_PERSON_ID,
+    CTF_BLOG_POST_TYPE_ID: process.env.CTF_BLOG_POST_TYPE_ID,
+    CTF_MEMBER_TYPE_ID: process.env.CTF_MEMBER_TYPE_ID,
+    CTF_SPACE_ID: process.env.CTF_SPACE_ID,
+    CTF_CDA_ACCESS_TOKEN: process.env.CTF_CDA_ACCESS_TOKEN
+  },
   /*
    ** Headers of the page
    */
@@ -27,7 +35,7 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: [],
+  plugins: ['~/plugins/contentful'],
   /*
    ** Nuxt.js dev-modules
    */
@@ -48,7 +56,8 @@ export default {
   modules: [
     '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv',
+    '~/modules/scrape'
   ],
   /*
    ** Build configuration
@@ -57,6 +66,11 @@ export default {
     babel: {
       presets() {
         return [['@nuxt/babel-preset-app', { loose: true }]]
+      }
+    },
+    extend(config) {
+      config.node = {
+        fs: 'empty'
       }
     }
   }
