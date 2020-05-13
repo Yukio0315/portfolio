@@ -54,8 +54,10 @@ export default {
    ** Build configuration
    */
   build: {
-    /*
-     ** You can extend webpack config here
-     */
+    babel: {
+      presets() {
+        return [['@nuxt/babel-preset-app', { loose: true }]]
+      }
+    }
   }
 }

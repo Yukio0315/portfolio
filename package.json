@@ -25,7 +25,8 @@
     "@nuxtjs/dotenv": "^1.4.0",
     "@nuxtjs/pwa": "^3.0.0-0",
     "normalize.css": "^8.0.1",
-    "nuxt": "^2.0.0"
+    "nuxt": "^2.0.0",
+    "nuxt-property-decorator": "^2.7.2"
   },
   "devDependencies": {
     "@fortawesome/free-brands-svg-icons": "^5.13.0",
@@ -45,7 +46,9 @@
     "husky": "^4.0.0",
     "jest": "^24.1.0",
     "lint-staged": "^10.0.0",
+    "node-sass": "^4.14.1",
     "prettier": "^1.19.1",
+    "sass-loader": "^8.0.2",
     "stylelint": "^10.1.0",
     "ts-jest": "^25.0.0",
     "vue-jest": "^4.0.0-0"
