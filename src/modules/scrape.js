@@ -27,14 +27,14 @@ export default function scraper() {
           image: entry.fields.image.fields.file.url,
           body: entry.fields.body,
           technologies: entry.fields.technologies,
-          created: moment(entry.fields.created).format('YYYY-MM-DD'),
+          created: entry.fields.created,
           url: entry.fields.url,
           github: entry.fields.github,
           period: entry.fields.period,
           unit: entry.fields.unit
         })
       })
-    scraper.push(writeData('src/static/data/works.json', works))
+    scraper.push(writeData('src/static/data/works.json', JSON.stringify(works)))
 
     const profileEntry = await createClient(ctfConfig).getEntry(
       ctfConfig.CTF_PROFILE_ENTRY_ID
@@ -46,7 +46,9 @@ export default function scraper() {
       skills: profileEntry.fields.skills,
       accounts: profileEntry.fields.accounts
     }
-    scraper.push(writeData('src/static/data/profile.json', profile))
+    scraper.push(
+      writeData('src/static/data/profile.json', JSON.stringify(profile))
+    )
 
     return Promise.all(scraper)
   })

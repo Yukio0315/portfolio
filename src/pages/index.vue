@@ -1,10 +1,10 @@
 <template>
   <main class="main">
-    <TheTop v-if="now === menu[0].name" />
-    <TheWork v-if="now === menu[1].name" />
-    <TheProfile v-if="now === menu[2].name" />
-    <TheBlog v-if="now === menu[3].name" />
     <TheSideMenu :menu="menu" @choose-menu="chooseMenu" />
+    <TheTop v-if="now === menu[0].name" />
+    <TheWork v-if="now === menu[1].name" :works="works" />
+    <TheProfile v-if="now === menu[2].name" :profile="profile" />
+    <TheBlog v-if="now === menu[3].name" />
   </main>
 </template>
 
@@ -15,6 +15,8 @@ import TheWork from '@/components/TheWork.vue'
 import TheProfile from '@/components/TheProfile.vue'
 import TheBlog from '@/components/TheBlog.vue'
 import TheSideMenu from '@/components/Navigation/TheSideMenu.vue'
+import { Work } from '@/types/work'
+import { Profile } from '@/types/profile'
 
 @Component({
   components: { TheTop, TheSideMenu, TheWork, TheProfile, TheBlog }
@@ -28,6 +30,15 @@ export default class MyPage extends Vue {
   ]
 
   now = this.menu[0].name
+  works: Work[] = []
+  profile = {} as Profile
+
+  created() {
+    this.profile = JSON.parse(require('@/static/data/profile.json'))
+
+    const works = JSON.parse(require('../static/data/works.json'))
+    this.works.push(...works)
+  }
 
   chooseMenu(item: string) {
     this.now = item
