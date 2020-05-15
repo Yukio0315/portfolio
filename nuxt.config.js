@@ -6,7 +6,8 @@ export default {
     CTF_PROFILE_ENTRY_ID: process.env.CTF_PROFILE_ENTRY_ID,
     CTF_WORKS_TYPE_ID: process.env.CTF_WORKS_TYPE_ID,
     CTF_SPACE_ID: process.env.CTF_SPACE_ID,
-    CTF_CDA_ACCESS_TOKEN: process.env.CTF_CDA_ACCESS_TOKEN
+    CTF_CDA_ACCESS_TOKEN: process.env.CTF_CDA_ACCESS_TOKEN,
+    BLOG_URL: process.env.BLOG_URL
   },
   /*
    ** Headers of the page
@@ -57,7 +58,6 @@ export default {
     '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
-    '@nuxtjs/axios',
     '~/modules/scrape'
   ],
   /*

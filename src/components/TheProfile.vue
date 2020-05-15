@@ -1,7 +1,6 @@
 <template>
   <section>
     <h2>Who I am</h2>
-    <p>|</p>
     <h3>{{ profile.name }}</h3>
     <p>{{ profile.description }}</p>
     <table>

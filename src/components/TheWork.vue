@@ -1,7 +1,6 @@
 <template>
   <section>
     <h2>Works</h2>
-    <p>|</p>
     <Project v-for="work in works" :key="work.id" :work="work" />
   </section>
 </template>

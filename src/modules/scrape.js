@@ -1,3 +1,4 @@
+import axios from 'axios'
 import fs from 'fs-extra'
 import moment from 'moment-mini'
 import { createClient } from '../plugins/contentful'
@@ -49,6 +50,21 @@ export default function scraper() {
     scraper.push(
       writeData('src/static/data/profile.json', JSON.stringify(profile))
     )
+
+    const postsFeed = await axios.get(process.env.BLOG_URL)
+    const posts = []
+    postsFeed.data.items
+      .sort((a, b) => moment(b.pubDate).diff(moment(a.pubDate)))
+      .forEach((item) => {
+        posts.push({
+          title: item.title,
+          image: item.thumbnail,
+          pubDate: moment(item.pubDate).format('YYYY-MM-DD'),
+          url: item.link
+        })
+      })
+
+    scraper.push(writeData('src/static/data/blogs.json', JSON.stringify(posts)))
 
     return Promise.all(scraper)
   })
