@@ -36,6 +36,18 @@ export default function scraper() {
       })
     scraper.push(writeData('src/static/data/works.json', works))
 
+    const profileEntry = await createClient(ctfConfig).getEntry(
+      ctfConfig.CTF_PROFILE_ENTRY_ID
+    )
+    const profile = {
+      name: profileEntry.fields.name,
+      description: profileEntry.fields.description,
+      professional: profileEntry.fields.professional,
+      skills: profileEntry.fields.skills,
+      accounts: profileEntry.fields.accounts
+    }
+    scraper.push(writeData('src/static/data/profile.json', profile))
+
     return Promise.all(scraper)
   })
 }
