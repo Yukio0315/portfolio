@@ -10,28 +10,31 @@ export default function scraper() {
   }
   this.nuxt.hook('build:before', async () => {
     await fs.emptyDir('../static/data')
-    const scraper = []
-    const entries = await createClient(ctfConfig).getEntries({
-      content_type: ctfConfig.CTF_BLOG_POST_TYPE_ID
-    })
 
-    const posts = []
-    entries.items
-      .sort((a, b) =>
-        moment(b.fields.publishDate).diff(moment(a.fields.publishDate))
-      )
+    const scraper = []
+
+    const worksEntries = await createClient(ctfConfig).getEntries({
+      content_type: ctfConfig.CTF_WORKS_TYPE_ID
+    })
+    const works = []
+    worksEntries.items
+      .sort((a, b) => moment(b.fields.created).diff(moment(a.fields.created)))
       .forEach((entry) => {
-        posts.push({
+        works.push({
           id: entry.sys.id,
           title: entry.fields.title,
-          image: entry.fields.heroImage.fields.file.url,
-          overview: entry.fields.overview,
-          tags: entry.fields.tags,
-          date: moment(entry.fields.publishDate).format('YYYY-MM-DD'),
-          slug: entry.fields.slug
+          definition: entry.fields.definition,
+          image: entry.fields.image.fields.file.url,
+          body: entry.fields.body,
+          technologies: entry.fields.technologies,
+          created: moment(entry.fields.created).format('YYYY-MM-DD'),
+          url: entry.fields.url,
+          github: entry.fields.github,
+          period: entry.fields.period,
+          unit: entry.fields.unit
         })
-        scraper.push(writeData('src/static/data/works.json', posts))
       })
+    scraper.push(writeData('src/static/data/works.json', works))
 
     return Promise.all(scraper)
   })
