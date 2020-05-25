@@ -48,7 +48,7 @@ export default {
   ],
   fontawesome: {
     icons: {
-      solid: ['faBars']
+      solid: ['faBars', 'faTimes']
     }
   },
   /*
