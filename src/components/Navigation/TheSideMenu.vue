@@ -50,21 +50,29 @@ export default class TheSideMenu extends Vue {
 
 <style lang="scss" scoped>
 .nav {
+  $block: &;
+  $icon-size: 15%;
   display: grid;
   position: absolute;
   right: 0;
   top: 0;
   height: 100%;
-  background-color: pink;
+  color: $color-main;
+  background-color: $color-font;
   width: 10%;
-  &:hover {
-    width: 30%;
-  }
   &-icon {
     height: 100%;
-    width: 10%;
-    margin-left: 50%;
-    margin-right: 50%;
+    width: $icon-size;
+    margin: {
+      left: (100%-$icon-size)/2;
+      right: (100%-$icon-size)/2;
+    }
+  }
+  &:hover {
+    width: 30%;
+    #{$block}-icon {
+      color: red;
+    }
   }
 }
 </style>

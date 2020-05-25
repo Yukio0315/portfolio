@@ -1,5 +1,12 @@
 <template>
-  <div>
+  <div class="app">
     <nuxt />
   </div>
 </template>
+
+<style lang="scss" scoped>
+.app {
+  background-color: $color-main;
+  color: $color-font;
+}
+</style>

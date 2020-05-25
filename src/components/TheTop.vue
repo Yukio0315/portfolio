@@ -18,6 +18,9 @@ export default class TheTop extends Vue {
 <style lang="scss" scoped>
 .top {
   display: grid;
+  width: 100vw;
+  height: 100vh;
+  margin-left: 10%;
   h3 {
   }
 }

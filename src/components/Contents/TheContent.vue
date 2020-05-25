@@ -1,5 +1,5 @@
 <template>
-  <section>
+  <section class="content">
     <h2>{{ content.title }}</h2>
     <TheWork v-if="content.name === menu[1].name" />
     <TheProfile v-if="content.name === menu[2].name" />
@@ -20,3 +20,9 @@ export default class TheContent extends Vue {
   @Prop(Object) content!: Content
 }
 </script>
+
+<style lang="scss" scoped>
+.content {
+  display: grid;
+}
+</style>

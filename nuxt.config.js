@@ -32,7 +32,11 @@ export default {
   /*
    ** Global CSS
    */
-  css: ['normalize.css'],
+  css: [
+    'normalize.css',
+    '~assets/scss/variables.scss',
+    '~assets/scss/mixin.scss'
+  ],
   /*
    ** Plugins to load before mounting the App
    */
@@ -44,6 +48,7 @@ export default {
     '@nuxt/typescript-build',
     // Doc: https://github.com/nuxt-community/stylelint-module
     '@nuxtjs/stylelint-module',
+    '@nuxtjs/style-resources',
     '@nuxtjs/fontawesome'
   ],
   fontawesome: {
@@ -58,8 +63,11 @@ export default {
     '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
-    '~/modules/scrape'
+    '@/modules/scrape'
   ],
+  styleResources: {
+    scss: ['~assets/scss/*.scss']
+  },
   /*
    ** Build configuration
    */
