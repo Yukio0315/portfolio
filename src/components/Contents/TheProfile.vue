@@ -1,6 +1,5 @@
 <template>
   <section>
-    <h2>Who I am</h2>
     <h3>{{ profile.name }}</h3>
     <p>{{ profile.description }}</p>
     <table>
@@ -23,11 +22,15 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component, Prop } from 'nuxt-property-decorator'
+import { Vue, Component } from 'nuxt-property-decorator'
 import { Profile } from '@/types/profile'
 
 @Component({})
 export default class TheProfile extends Vue {
-  @Prop(Object) profile!: Profile
+  profile = {} as Profile
+
+  created() {
+    this.profile = JSON.parse(require('@/static/data/profile.json'))
+  }
 }
 </script>
