@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 export default {
   mode: 'universal',
   srcDir: 'src/',
@@ -7,7 +9,9 @@ export default {
     CTF_WORKS_TYPE_ID: process.env.CTF_WORKS_TYPE_ID,
     CTF_SPACE_ID: process.env.CTF_SPACE_ID,
     CTF_CDA_ACCESS_TOKEN: process.env.CTF_CDA_ACCESS_TOKEN,
-    BLOG_URL: process.env.BLOG_URL
+    BLOG_URL: process.env.BLOG_URL,
+    EMAIL: process.env.EMAIL,
+    GITHUB: process.env.GITHUB
   },
   /*
    ** Headers of the page
@@ -53,7 +57,9 @@ export default {
   ],
   fontawesome: {
     icons: {
-      solid: ['faBars', 'faTimes']
+      solid: ['faBars', 'faTimes'],
+      regular: ['faEnvelope'],
+      brands: ['faGithub']
     }
   },
   /*

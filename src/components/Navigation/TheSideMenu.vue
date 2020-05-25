@@ -1,18 +1,26 @@
 <template>
-  <nav class="nav" @mouseover="openMenu" @mouseleave="closeMenu">
-    <font-awesome-icon
-      v-if="isClose"
-      class="nav-icon"
-      icon="bars"
-      @click="openMenu"
-    />
-    <div v-else>
-      <ul class="nav-list">
+  <nav class="menu" @mouseover="openMenu" @mouseleave="closeMenu">
+    <div class="menu-bar">
+      <font-awesome-icon
+        class="menu-bar-icon"
+        :icon="isClose ? 'bars' : 'times'"
+        @click="closeMenu"
+      />
+    </div>
+    <div v-if="!isClose" class="menu-open">
+      <ul class="menu-open-list">
         <li v-for="item in menu" :key="item.id" @click="chooseMenu(item.name)">
           {{ item.name }}
         </li>
       </ul>
-      <font-awesome-icon class="nav-icon" icon="times" @click="closeMenu" />
+      <a :href="`mailto:${email}`"
+        ><font-awesome-icon
+          class="menu-open-envelope"
+          :icon="['far', 'envelope']"
+      /></a>
+      <a :href="github"
+        ><font-awesome-icon class="menu-open-github" :icon="['fab', 'github']"
+      /></a>
     </div>
   </nav>
 </template>
@@ -31,6 +39,8 @@ type Menu = [
 export default class TheSideMenu extends Vue {
   @Prop(Array) menu!: Menu
   isClose = true
+  github = process.env.GITHUB
+  email = process.env.EMAIL
 
   closeMenu() {
     this.isClose = true
@@ -49,29 +59,29 @@ export default class TheSideMenu extends Vue {
 </script>
 
 <style lang="scss" scoped>
-.nav {
-  $block: &;
-  $icon-size: 15%;
-  display: grid;
-  position: absolute;
-  right: 0;
-  top: 0;
+.menu {
+  display: flex;
+  flex-direction: row-reverse;
   height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
   color: $color-main;
   background-color: $color-font;
-  width: 10%;
-  &-icon {
-    height: 100%;
-    width: $icon-size;
-    margin: {
-      left: (100%-$icon-size)/2;
-      right: (100%-$icon-size)/2;
-    }
+  &-list {
+    width: 300px;
   }
-  &:hover {
-    width: 30%;
-    #{$block}-icon {
-      color: red;
+  &-bar {
+    $block: &;
+    $icon-size: 15%;
+    width: 200px;
+    &-icon {
+      height: 100%;
+      width: $icon-size;
+      margin: {
+        left: (100%-$icon-size)/2;
+        right: (100%-$icon-size)/2;
+      }
     }
   }
 }
