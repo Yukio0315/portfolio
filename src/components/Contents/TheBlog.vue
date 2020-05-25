@@ -1,15 +1,20 @@
 <template>
   <section>
-    <Post v-for="post in blogs" :key="post.title" :post="post" />
+    <article v-for="post in blogs" :key="post.title">
+      <a :href="post.url">
+        <img :src="post.image" />
+        <h3>{{ post.title }}</h3>
+        <p>{{ post.pubDate }}</p>
+      </a>
+    </article>
   </section>
 </template>
 
 <script lang="ts">
 import { Vue, Component } from 'nuxt-property-decorator'
 import { Blog } from '@/types/blog'
-import Post from '@/components/Contents/Post.vue'
 
-@Component({ components: { Post } })
+@Component({})
 export default class TheBlog extends Vue {
   blogs: Blog[] = []
   created() {
