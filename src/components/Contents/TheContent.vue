@@ -15,7 +15,7 @@ import TheBlog from '@/components/Contents/TheBlog.vue'
 import { Content } from '@/types/content'
 
 @Component({ components: { TheWork, TheProfile, TheBlog } })
-export default class TheLayout extends Vue {
+export default class TheContent extends Vue {
   @Prop(Array) menu!: Content[]
   @Prop(Object) content!: Content
 }

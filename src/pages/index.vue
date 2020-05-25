@@ -2,18 +2,18 @@
   <main class="main">
     <TheSideMenu :menu="menu" @choose-menu="chooseMenu" />
     <TheTop v-if="now === menu[0].name" :content="chosenContent" />
-    <TheLayout v-else :content="chosenContent" :menu="menu" />
+    <TheContent v-else :content="chosenContent" :menu="menu" />
   </main>
 </template>
 
 <script lang="ts">
 import { Vue, Component } from 'nuxt-property-decorator'
 import TheTop from '@/components/TheTop.vue'
-import TheLayout from '@/components/Contents/TheLayout.vue'
+import TheContent from '@/components/Contents/TheContent.vue'
 import TheSideMenu from '@/components/Navigation/TheSideMenu.vue'
 
 @Component({
-  components: { TheTop, TheSideMenu, TheLayout }
+  components: { TheTop, TheSideMenu, TheContent }
 })
 export default class MyPage extends Vue {
   menu = [
