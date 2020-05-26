@@ -81,13 +81,14 @@ export default class TheSideMenu extends Vue {
     grid-template-rows: 80% 20%;
     width: 150px;
     margin: {
-      top: 110%;
+      top: 40%;
       left: 50px;
     }
     &-list {
       grid-row: 1 / 2;
       font-size: 26px;
       list-style-type: none;
+      align-self: center;
       li {
         margin-top: 40px;
         cursor: pointer;

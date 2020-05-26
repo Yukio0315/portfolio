@@ -17,7 +17,7 @@ import TheSideMenu from '@/components/Navigation/TheSideMenu.vue'
 })
 export default class MyPage extends Vue {
   menu = [
-    { id: 1, name: 'HOME', title: 'Yukio Ueda' },
+    { id: 1, name: 'HOME', title: 'YUKIO UEDA' },
     { id: 2, name: 'WORK', title: 'Works' },
     { id: 3, name: 'PROFILE', title: 'Who I am' },
     { id: 4, name: 'BLOG', title: 'Tech Blog' }
