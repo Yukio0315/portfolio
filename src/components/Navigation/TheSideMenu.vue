@@ -4,7 +4,7 @@
       <font-awesome-icon
         class="menu-bar-icon"
         :icon="isClose ? 'bars' : 'times'"
-        @click="closeMenu"
+        @click="toggleMenu"
       />
     </div>
     <div v-if="!isClose" class="menu-open">
@@ -13,14 +13,18 @@
           {{ item.name }}
         </li>
       </ul>
-      <a :href="`mailto:${email}`"
-        ><font-awesome-icon
-          class="menu-open-envelope"
-          :icon="['far', 'envelope']"
-      /></a>
-      <a :href="github"
-        ><font-awesome-icon class="menu-open-github" :icon="['fab', 'github']"
-      /></a>
+      <div class="menu-open-icon">
+        <a :href="`mailto:${email}`"
+          ><font-awesome-icon
+            class="menu-open-icon-envelope"
+            :icon="['far', 'envelope']"
+        /></a>
+        <a :href="github"
+          ><font-awesome-icon
+            class="menu-open-icon-github"
+            :icon="['fab', 'github']"
+        /></a>
+      </div>
     </div>
   </nav>
 </template>
@@ -50,6 +54,10 @@ export default class TheSideMenu extends Vue {
     this.isClose = false
   }
 
+  toggleMenu() {
+    this.isClose = !this.isClose
+  }
+
   @Emit()
   chooseMenu(name: string) {
     this.closeMenu()
@@ -68,8 +76,33 @@ export default class TheSideMenu extends Vue {
   right: 0;
   color: $color-main;
   background-color: $color-font;
-  &-list {
-    width: 300px;
+  &-open {
+    display: grid;
+    grid-template-rows: 80% 20%;
+    width: 150px;
+    margin: {
+      top: 110%;
+      left: 50px;
+    }
+    &-list {
+      grid-row: 1 / 2;
+      font-size: 26px;
+      list-style-type: none;
+      li {
+        margin-top: 40px;
+        cursor: pointer;
+      }
+    }
+    &-icon {
+      grid-row: 2 / 3;
+      width: 200%;
+      &-envelope,
+      &-github {
+        margin-left: 40px;
+        font-size: 40px;
+        color: $color-main;
+      }
+    }
   }
   &-bar {
     $block: &;
@@ -82,6 +115,7 @@ export default class TheSideMenu extends Vue {
         left: (100%-$icon-size)/2;
         right: (100%-$icon-size)/2;
       }
+      cursor: pointer;
     }
   }
 }
