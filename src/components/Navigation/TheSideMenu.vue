@@ -71,7 +71,7 @@ export default class TheSideMenu extends Vue {
   display: flex;
   flex-direction: row-reverse;
   height: 100%;
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   color: $color-main;
@@ -79,7 +79,7 @@ export default class TheSideMenu extends Vue {
   &-open {
     display: grid;
     grid-template-rows: 80% 20%;
-    width: 150px;
+    width: $width-side;
     margin: {
       top: 40%;
       left: 50px;
@@ -106,16 +106,13 @@ export default class TheSideMenu extends Vue {
     }
   }
   &-bar {
-    $block: &;
+    display: flex;
     $icon-size: 15%;
-    width: 200px;
+    width: $width-side-open;
+    justify-content: center;
     &-icon {
       height: 100%;
       width: $icon-size;
-      margin: {
-        left: (100%-$icon-size)/2;
-        right: (100%-$icon-size)/2;
-      }
       cursor: pointer;
     }
   }

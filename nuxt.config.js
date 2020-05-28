@@ -30,7 +30,8 @@ export default {
     link: [
       {
         rel: 'stylesheet',
-        href: 'https://fonts.googleapis.com/css2?family=Montserrat&display=swap'
+        href:
+          'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap'
       },
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]

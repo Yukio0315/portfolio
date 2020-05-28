@@ -8,6 +8,6 @@
 .app {
   background-color: $color-main;
   color: $color-font;
-  font-family: 'Montserrat';
+  font-family: 'Montserrat:wght@400', sans-serif;
 }
 </style>
