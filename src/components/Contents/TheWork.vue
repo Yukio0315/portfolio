@@ -6,22 +6,20 @@
         <h4>{{ work.definitions }}</h4>
         <p>{{ work.body }}</p>
         <hr />
-        <div class="footer">
-          <ul class="tech">
-            <li v-for="tech in work.technologies" :key="tech" class="tech-item">
-              {{ tech }}
-            </li>
-          </ul>
-          <time>{{
-            `${formatDate(work.created)}  ${work.period}${work.unit}`
-          }}</time>
-          <p v-if="work.github">
-            <a :href="work.github" class="github"
-              ><font-awesome-icon :icon="['fab', 'github']" />Github</a
-            >
-          </p>
-          <a v-if="work.url" :href="work.url">View Website</a>
-        </div>
+        <ul class="tech">
+          <li v-for="tech in work.technologies" :key="tech" class="tech-item">
+            {{ tech }}
+          </li>
+        </ul>
+        <time>{{
+          `${formatDate(work.created)}  ${work.period}${work.unit}`
+        }}</time>
+        <p v-if="work.github">
+          <a :href="work.github" class="github"
+            ><font-awesome-icon :icon="['fab', 'github']" />Github</a
+          >
+        </p>
+        <a v-if="work.url" :href="work.url">View Website</a>
       </div>
       <img class="image" :src="work.image" />
     </article>
@@ -50,13 +48,14 @@ export default class TheWork extends Vue {
 <style lang="scss" scoped>
 .article {
   $column-width: 450px;
+  $column-space: $width-main - $column-width * 2;
   display: grid;
-  grid-template: 300px 400px / $column-width $column-width;
+  grid-template-columns: $column-width $column-space $column-width;
   margin-bottom: 130px;
   .content {
-    grid-row: 1 / 2;
     grid-column: 1 / 2;
-    margin-right: $width-main - $column-width * 2;
+    width: $column-width;
+    margin-right: $column-space;
     h3 {
       margin-top: 0px;
       color: $color-font-sub;
@@ -72,31 +71,27 @@ export default class TheWork extends Vue {
     hr {
       margin-bottom: 0px;
     }
-    .footer {
-      grid-row: 2 / 3;
-      grid-column: 1 / 2;
-      .tech {
-        display: flex;
-        list-style-type: none;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        width: $column-width;
-        padding-left: 0px;
-        &-item {
-          &:not(:last-child)::after {
-            content: '/';
-          }
+    .tech {
+      display: flex;
+      list-style-type: none;
+      flex-wrap: wrap;
+      padding-left: 0px;
+      &-item {
+        &:not(:first-child) {
+          margin-left: 5px;
+        }
+        &:not(:last-child)::after {
+          content: '/';
         }
       }
-      .github {
-        color: $color-font;
-        text-decoration: none;
-      }
+    }
+    .github {
+      color: $color-font;
+      text-decoration: none;
     }
   }
   .image {
-    grid-row: 1 / 2;
-    grid-column: 2 / 3;
+    grid-column: 3 / 4;
     width: $column-width;
   }
 }
