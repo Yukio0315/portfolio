@@ -9,10 +9,9 @@
       </tr>
     </table>
 
-    <!-- <div v-for="skill in skills" :key="skill.name">
-      <img :url="skill.url" />
-    </div> -->
-
+    <div class="skills">
+      <img v-for="skill in profile.skills" :key="skill.name" :src="skill.url" />
+    </div>
     <ul v-for="account in profile.accounts" :key="account.id">
       <li>
         <a :href="account.url">{{ account.name }}</a>

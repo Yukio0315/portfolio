@@ -44,7 +44,12 @@ export default function scraper() {
       name: profileEntry.fields.name,
       description: profileEntry.fields.description,
       professional: profileEntry.fields.professional,
-      skills: profileEntry.fields.skills,
+      skills: profileEntry.fields.skills.map((skill) => {
+        return {
+          name: skill.fields.title,
+          url: skill.fields.file.url
+        }
+      }),
       accounts: profileEntry.fields.accounts
     }
     scraper.push(
