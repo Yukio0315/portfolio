@@ -1,5 +1,6 @@
 $breakpoints: (
-  xs: "only screen and (max-width: 375px)",
+  s: "only screen and (max-width: 640px)",
+  m: "only screen and (max-width: 1024px)",
 );
 
 @mixin media($breakpoint) {
