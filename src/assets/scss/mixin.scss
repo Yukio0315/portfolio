@@ -8,3 +8,19 @@ $breakpoints: (
     @content;
   }
 }
+
+@mixin heading-font($size: 27px) {
+  font: {
+    weight: normal;
+    family: 'Montserrat:500';
+    size: $size;
+  }
+}
+
+@mixin body-font($size: 16px) {
+  font: {
+    family: 'YuGothic';
+    weight: 500;
+    size: $size;
+  }
+}

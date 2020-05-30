@@ -47,7 +47,7 @@ export default class TheWork extends Vue {
 
 <style lang="scss" scoped>
 .article {
-  $column-width: 450px;
+  $column-width: 400px;
   $column-space: $width-main - $column-width * 2;
   display: grid;
   grid-template-columns: $column-width $column-space $column-width;
@@ -59,17 +59,14 @@ export default class TheWork extends Vue {
     h3 {
       margin-top: 0px;
       color: $color-font-sub;
-      font: {
-        family: 'Montserrat:500';
-        weight: normal;
-        size: 27px;
-      }
+      @include heading-font;
     }
     p {
       line-height: 25px;
     }
     hr {
       margin-bottom: 0px;
+      border: 1px solid $color-bar;
     }
     .tech {
       display: flex;
