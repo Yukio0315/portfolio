@@ -1,10 +1,10 @@
 <template>
-  <section>
-    <article v-for="post in blogs" :key="post.title">
+  <section class="blogs">
+    <article v-for="post in blogs" :key="post.title" class="blog">
       <a :href="post.url">
         <img :src="post.image" />
         <h3>{{ post.title }}</h3>
-        <p>{{ post.pubDate }}</p>
+        <p class="date">{{ post.pubDate }}</p>
       </a>
     </article>
   </section>
@@ -22,3 +22,32 @@ export default class TheBlog extends Vue {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.blogs {
+  $blog-width: 250px;
+  display: flex;
+  justify-content: space-between;
+  .blog {
+    width: $blog-width;
+    a {
+      text-decoration: none;
+      color: $color-font;
+      &:hover {
+        color: $color-font-sub;
+      }
+      img {
+        width: $blog-width;
+        height: 170px;
+        object-fit: cover;
+      }
+      h3 {
+        height: 70px;
+      }
+      .date {
+        @include montserrat-medium(14px);
+      }
+    }
+  }
+}
+</style>

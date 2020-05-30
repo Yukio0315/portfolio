@@ -9,7 +9,7 @@ $breakpoints: (
   }
 }
 
-@mixin heading-font($size: 27px) {
+@mixin montserrat-medium($size: 27px) {
   font: {
     weight: normal;
     family: 'Montserrat:500';

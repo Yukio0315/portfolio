@@ -53,7 +53,7 @@ export default class TheProfile extends Vue {
   $spacer: 30px;
   $large-spacer: 60px;
   h3 {
-    @include heading-font;
+    @include montserrat-medium;
     margin-bottom: 0px;
   }
   p {
@@ -70,7 +70,7 @@ export default class TheProfile extends Vue {
     }
   }
   .skills {
-    @include heading-font;
+    @include montserrat-medium;
     margin-top: $large-spacer;
     .images {
       text-align: center;
@@ -86,7 +86,7 @@ export default class TheProfile extends Vue {
   .account {
     margin-top: $large-spacer;
     h3 {
-      @include heading-font;
+      @include montserrat-medium;
     }
     .fa-ul {
       margin-left: 22px;

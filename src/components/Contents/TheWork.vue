@@ -59,7 +59,7 @@ export default class TheWork extends Vue {
     h3 {
       margin-top: 0px;
       color: $color-font-sub;
-      @include heading-font;
+      @include montserrat-medium;
     }
     p {
       line-height: 25px;
