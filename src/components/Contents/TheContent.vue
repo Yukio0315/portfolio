@@ -30,6 +30,7 @@ export default class TheContent extends Vue {
 .content {
   display: flex;
   justify-content: center;
+  margin-right: $width-side;
   &-body {
     width: $width-main;
     h2 {

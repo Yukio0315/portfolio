@@ -79,7 +79,7 @@ export default class TheSideMenu extends Vue {
   &-open {
     display: grid;
     grid-template-rows: 80% 20%;
-    width: $width-side;
+    width: $width-side-open;
     margin: {
       top: 40%;
       left: 50px;
@@ -108,7 +108,7 @@ export default class TheSideMenu extends Vue {
   &-bar {
     display: flex;
     $icon-size: 15%;
-    width: $width-side-open;
+    width: $width-side;
     justify-content: center;
     &-icon {
       height: 100%;
