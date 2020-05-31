@@ -13,7 +13,7 @@
     </section>
     <font-awesome-icon
       ref="up"
-      data-lax-preset="blurInOut"
+      data-lax-preset="blurIn"
       :icon="['fas', 'chevron-circle-up']"
     />
     <TheFooter />
