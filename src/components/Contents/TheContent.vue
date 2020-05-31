@@ -11,7 +11,11 @@
         </div>
       </div>
     </section>
-    <font-awesome-icon :icon="['fas', 'chevron-circle-up']" />
+    <font-awesome-icon
+      ref="up"
+      data-lax-preset="blurInOut"
+      :icon="['fas', 'chevron-circle-up']"
+    />
     <TheFooter />
   </div>
 </template>
@@ -23,11 +27,29 @@ import TheProfile from '@/components/Contents/TheProfile.vue'
 import TheBlog from '@/components/Contents/TheBlog.vue'
 import TheFooter from '@/components/Navigation/TheFooter.vue'
 import { Content } from '@/types/content'
+const lax = require('lax.js')
 
 @Component({ components: { TheWork, TheProfile, TheBlog, TheFooter } })
 export default class TheContent extends Vue {
   @Prop(Array) menu!: Content[]
   @Prop(Object) content!: Content
+  showIcon = false
+
+  mounted() {
+    lax.addElement(this.$refs.up)
+  }
+
+  created() {
+    lax.setup()
+
+    document.addEventListener(
+      'scroll',
+      () => {
+        lax.update(window.scrollY)
+      },
+      false
+    )
+  }
 }
 </script>
 

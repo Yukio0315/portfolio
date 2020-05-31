@@ -27,6 +27,7 @@
     "@nuxtjs/pwa": "^3.0.0-0",
     "axios": "^0.19.2",
     "fs-extra": "^9.0.0",
+    "lax.js": "^1.2.5",
     "moment-mini": "^2.24.0",
     "normalize.css": "^8.0.1",
     "nuxt": "^2.0.0",
