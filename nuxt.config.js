@@ -64,7 +64,7 @@ export default {
   ],
   fontawesome: {
     icons: {
-      solid: ['faBars', 'faTimes', 'faChevronRight'],
+      solid: ['faBars', 'faTimes', 'faChevronRight', 'faChevronCircleUp'],
       regular: ['faEnvelope'],
       brands: ['faGithub']
     }
