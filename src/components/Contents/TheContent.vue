@@ -15,6 +15,7 @@
       ref="up"
       data-lax-preset="blurIn"
       :icon="['fas', 'chevron-circle-up']"
+      @click="scrollTop"
     />
     <TheFooter />
   </div>
@@ -49,6 +50,10 @@ export default class TheContent extends Vue {
       },
       false
     )
+  }
+
+  scrollTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 }
 </script>
