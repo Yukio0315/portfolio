@@ -1,8 +1,12 @@
 <template>
   <main class="main">
     <TheSideMenu :menu="menu" @choose-menu="chooseMenu" />
-    <TheTop v-if="now === menu[0].name" :content="chosenContent" />
-    <TheContent v-else :content="chosenContent" :menu="menu" />
+    <TheTop v-show="now === menu[0].name" :content="chosenContent" />
+    <TheContent
+      v-if="now !== menu[0].name"
+      :content="chosenContent"
+      :menu="menu"
+    />
   </main>
 </template>
 

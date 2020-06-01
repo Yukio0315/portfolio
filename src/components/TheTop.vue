@@ -26,7 +26,6 @@ export default class TheTop extends mixins(Mixin) {
     this.removeCursor()
     this.showRectangle()
     this.showSubtitle()
-    // this.removeRectangle()
   }
 
   showCursor(): anime.AnimeInstance {
