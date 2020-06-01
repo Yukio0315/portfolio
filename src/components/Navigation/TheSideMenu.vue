@@ -7,21 +7,19 @@
         @click="toggleMenu"
       />
     </div>
-    <div class="menu__open">
-      <ul v-show="!isClose" class="list">
+    <div v-show="!isClose" class="menu__open">
+      <ul class="list">
         <li v-for="item in menu" :key="item.id" @click="chooseMenu(item.name)">
           {{ item.name }}
         </li>
       </ul>
-      <div v-show="!isClose">
-        <div class="social-icons">
-          <a :href="`mailto:${email}`"
-            ><font-awesome-icon class="envelope" :icon="['far', 'envelope']"
-          /></a>
-          <a :href="github"
-            ><font-awesome-icon class="github" :icon="['fab', 'github']"
-          /></a>
-        </div>
+      <div class="social-icons">
+        <a :href="`mailto:${email}`"
+          ><font-awesome-icon class="envelope" :icon="['far', 'envelope']"
+        /></a>
+        <a :href="github"
+          ><font-awesome-icon class="github" :icon="['fab', 'github']"
+        /></a>
       </div>
     </div>
   </nav>
@@ -42,27 +40,46 @@ type Menu = [
 export default class TheSideMenu extends Vue {
   @Prop(Array) menu!: Menu
   isClose = true
+  isMouseOver = false
   github = process.env.GITHUB
   email = process.env.EMAIL
 
   closeMenu() {
-    this.isClose = true
-    this.fadeMenu()
-    this.hideItem('.list')
-    this.hideItem('.social-icons')
+    this.closeDrawer()
+    setTimeout(() => {
+      this.isClose = true
+    }, 500)
+    this.isMouseOver = false
   }
 
   openMenu() {
-    this.isClose = false
+    if (!this.isMouseOver) {
+      this.isMouseOver = true
+      this.isClose = false
+      this.openDrawer()
+    }
+  }
+
+  toggleMenu() {
+    if (this.isClose) {
+      this.isMouseOver = false
+      this.openMenu()
+    } else {
+      this.closeMenu()
+      this.isMouseOver = true
+    }
+  }
+
+  openDrawer() {
     this.drawMenu()
     this.showItem('.list')
     this.showItem('.social-icons')
   }
 
-  toggleMenu() {
-    this.isClose = !this.isClose
-    if (this.isClose) this.fadeMenu()
-    else this.openMenu()
+  closeDrawer() {
+    this.hideItem('.list')
+    this.hideItem('.social-icons')
+    this.fadeMenu()
   }
 
   drawMenu() {
@@ -70,7 +87,7 @@ export default class TheSideMenu extends Vue {
       targets: '.menu__open',
       width: '150px',
       duration: 500,
-      easing: 'easeInOutExpo'
+      easing: 'easeInOutQuad'
     })
   }
 
@@ -78,8 +95,8 @@ export default class TheSideMenu extends Vue {
     anime({
       targets: '.menu__open',
       width: '0px',
-      duration: 500,
-      easing: 'easeInOutExpo'
+      duration: 200,
+      easing: 'easeInOutQuad'
     })
   }
 
@@ -88,7 +105,7 @@ export default class TheSideMenu extends Vue {
       targets,
       opacity: 1,
       duration: 500,
-      delay: 500
+      delay: 400
     })
   }
 
@@ -101,7 +118,8 @@ export default class TheSideMenu extends Vue {
 
   @Emit()
   chooseMenu(name: string) {
-    this.closeMenu()
+    this.isClose = true
+    this.isMouseOver = false
     return name
   }
 }
