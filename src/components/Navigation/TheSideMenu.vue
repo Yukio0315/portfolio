@@ -152,6 +152,7 @@ export default class TheSideMenu extends Vue {
     width: 0;
     .list {
       grid-row: 1 / 2;
+      margin-top: 150%;
       font-size: 26px;
       list-style-type: none;
       align-self: center;
