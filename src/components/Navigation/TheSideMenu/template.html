@@ -5,11 +5,7 @@
   @click="toggleMenu"
 >
   <div class="bar">
-    <font-awesome-icon
-      class="icon"
-      :icon="isClose ? 'bars' : 'times'"
-      @click="toggleMenu"
-    />
+    <font-awesome-icon class="icon" :icon="isClose ? 'bars' : 'times'" />
   </div>
   <div v-show="!isClose" class="menu__open">
     <ul class="list">

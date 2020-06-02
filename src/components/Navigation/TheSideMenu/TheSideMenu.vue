@@ -12,11 +12,12 @@ type Menu = [
   }
 ]
 
-@Component({})
+@Component
 export default class TheSideMenu extends mixins(Mixin) {
   @Prop(Array) menu!: Menu
   isClose = true
   isMouseOver = false
+  isToggling = false
   isMobile = false
   github = process.env.GITHUB
   email = process.env.EMAIL
@@ -35,43 +36,52 @@ export default class TheSideMenu extends mixins(Mixin) {
   }
 
   async closeMenu() {
-    this.closeDrawer()
-    await this.delay(500)
-    this.isClose = true
-    this.isMouseOver = false
+    if (!this.isToggling) {
+      this.closeAnime()
+      await this.delay(300)
+      this.isClose = true
+      this.isMouseOver = false
+    } else {
+      this.isMouseOver = false
+    }
   }
 
   openMenu() {
     if (!this.isMouseOver) {
       this.isMouseOver = true
       this.isClose = false
-      this.openDrawer()
+      this.openAnime()
     }
   }
 
-  toggleMenu() {
+  async toggleMenu() {
     if (this.isClose) {
       this.isMouseOver = false
-      this.openMenu()
+      this.openAnime()
+      this.isClose = false
     } else {
-      this.closeMenu()
       this.isMouseOver = true
+      this.closeAnime()
+      this.isToggling = true
+      await this.delay(300)
+      this.isClose = true
+      this.isToggling = false
     }
   }
 
-  openDrawer() {
-    this.isMobile ? this.drawMenuMobile() : this.drawMenuPC()
+  openAnime() {
+    this.isMobile ? this.drawMenuAnimeMobile() : this.drawMenuAnimePC()
     this.showItem('.list')
     this.showItem('.social-icons')
   }
 
-  closeDrawer() {
+  closeAnime() {
     this.hideItem('.list')
     this.hideItem('.social-icons')
-    this.isMobile ? this.fadeMenuMobile() : this.fadeMenuPC()
+    this.isMobile ? this.fadeMenuAnimeMobile() : this.fadeMenuAnimePC()
   }
 
-  drawMenuPC() {
+  drawMenuAnimePC() {
     anime({
       targets: '.menu__open',
       width: 150,
@@ -80,7 +90,7 @@ export default class TheSideMenu extends mixins(Mixin) {
     })
   }
 
-  fadeMenuPC() {
+  fadeMenuAnimePC() {
     anime({
       targets: '.menu__open',
       width: 0,
@@ -89,7 +99,7 @@ export default class TheSideMenu extends mixins(Mixin) {
     })
   }
 
-  drawMenuMobile() {
+  drawMenuAnimeMobile() {
     anime({
       targets: '.menu__open',
       height: 500,
@@ -98,7 +108,7 @@ export default class TheSideMenu extends mixins(Mixin) {
     })
   }
 
-  fadeMenuMobile() {
+  fadeMenuAnimeMobile() {
     anime({
       targets: '.menu__open',
       height: 0,
@@ -125,8 +135,6 @@ export default class TheSideMenu extends mixins(Mixin) {
 
   @Emit()
   chooseMenu(name: string) {
-    this.isClose = true
-    this.isMouseOver = false
     return name
   }
 }
