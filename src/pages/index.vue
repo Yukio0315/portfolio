@@ -14,7 +14,7 @@
 import { Vue, Component } from 'nuxt-property-decorator'
 import TheTop from '@/components/TheTop.vue'
 import TheContent from '@/components/Contents/TheContent.vue'
-import TheSideMenu from '@/components/Navigation/TheSideMenu.vue'
+import TheSideMenu from '@/components/Navigation/TheSideMenu/TheSideMenu.vue'
 
 @Component({
   components: { TheTop, TheSideMenu, TheContent }

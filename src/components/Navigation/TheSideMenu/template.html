@@ -1,0 +1,29 @@
+<nav
+  class="menu"
+  @mouseover="openMenu"
+  @mouseleave="closeMenu"
+  @click="toggleMenu"
+>
+  <div class="bar">
+    <font-awesome-icon
+      class="icon"
+      :icon="isClose ? 'bars' : 'times'"
+      @click="toggleMenu"
+    />
+  </div>
+  <div v-show="!isClose" class="menu__open">
+    <ul class="list">
+      <li v-for="item in menu" :key="item.id" @click="chooseMenu(item.name)">
+        {{ item.name }}
+      </li>
+    </ul>
+    <div class="social-icons">
+      <a :href="`mailto:${email}`"
+        ><font-awesome-icon class="envelope" :icon="['far', 'envelope']"
+      /></a>
+      <a :href="github"
+        ><font-awesome-icon class="github" :icon="['fab', 'github']"
+      /></a>
+    </div>
+  </div>
+</nav>
