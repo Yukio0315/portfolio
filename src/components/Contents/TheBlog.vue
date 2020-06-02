@@ -27,6 +27,7 @@ export default class TheBlog extends Vue {
 .blogs {
   $blog-width: 250px;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   .blog {
     width: $blog-width;
@@ -46,6 +47,15 @@ export default class TheBlog extends Vue {
       }
       .date {
         @include montserrat-medium(14px);
+      }
+    }
+  }
+  @include media(m) {
+    justify-content: space-around;
+    .blog {
+      margin-top: 30px;
+      a h3 {
+        height: 40px;
       }
     }
   }

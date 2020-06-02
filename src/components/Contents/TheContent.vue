@@ -84,8 +84,30 @@ export default class TheContent extends Vue {
         height: 50px;
         background-color: $color-bar;
       }
-      .body-main {
+      &-main {
         margin-top: 150px;
+      }
+    }
+    @include media(m) {
+      margin-right: 0;
+      text-align: left;
+      .body {
+        width: 100vw;
+        h2 {
+          margin: {
+            top: 140px;
+            bottom: 20px;
+            left: 50px;
+          }
+          font-size: 45px;
+        }
+        .virtical-line {
+          height: 25px;
+          margin-left: 90px;
+        }
+        &-main {
+          margin-top: 40px;
+        }
       }
     }
   }
@@ -95,6 +117,12 @@ export default class TheContent extends Vue {
     bottom: $height-footer + 30px;
     font-size: 30px;
     margin-right: 20px;
+  }
+
+  @include media(m) {
+    .fa-chevron-circle-up {
+      right: 0px;
+    }
   }
 }
 </style>
