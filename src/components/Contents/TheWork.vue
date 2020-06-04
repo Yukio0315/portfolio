@@ -1,12 +1,12 @@
 <template>
   <section>
     <article v-for="work in works" :key="work.id" class="article">
-      <div class="content">
+      <div class="article-content">
         <h3>{{ work.title }}</h3>
         <h4>{{ work.definitions }}</h4>
         <img class="image" :src="work.image" />
         <p>{{ work.body }}</p>
-        <div class="content-footer">
+        <div class="article-content-footer">
           <hr />
           <ul class="tech">
             <li v-for="tech in work.technologies" :key="tech" class="tech-item">
@@ -55,7 +55,7 @@ export default class TheWork extends Vue {
   align-content: center;
   margin-bottom: 130px;
   width: $width-main;
-  .content {
+  .article-content {
     display: grid;
     grid-template-columns: $column-width $column-space $column-width;
     grid-template-rows: 70px 30px auto 200px;
@@ -101,10 +101,21 @@ export default class TheWork extends Vue {
       }
     }
   }
+  @include media(m) {
+    width: $width-medium-main;
+    .article-content {
+      $column-width-medium: 290px;
+      $column-width-medium-space: $width-medium-main - $column-width-medium * 2;
+      grid-template-columns: $column-width-medium $column-width-medium-space $column-width-medium;
+      .image {
+        width: $column-width-medium;
+      }
+    }
+  }
   @include media(s) {
     width: $width-mobile-main;
     margin: 0 auto;
-    .content {
+    .article-content {
       display: inline;
       .image {
         width: $width-mobile-main;

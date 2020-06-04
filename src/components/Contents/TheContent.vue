@@ -90,6 +90,25 @@ export default class TheContent extends Vue {
     }
     @include media(m) {
       margin-right: 0;
+      .body {
+        width: $width-medium-main;
+        h2 {
+          margin-bottom: 40px;
+          font-size: 50px;
+        }
+        h3 {
+          margin-bottom: 50px;
+        }
+        .virtical-line {
+          height: 40px;
+        }
+        &-main {
+          margin-top: 80px;
+        }
+      }
+    }
+    @include media(s) {
+      margin-right: 0;
       text-align: left;
       .body {
         width: $width-mobile-main;
