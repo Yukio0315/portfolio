@@ -59,7 +59,7 @@ export default class TheProfile extends Vue {
   p {
     @include body-font;
     line-height: 1.7em;
-    width: 640px;
+    max-width: 640px;
   }
   .companies {
     @include body-font;
