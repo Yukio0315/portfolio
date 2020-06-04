@@ -138,18 +138,18 @@ export default class TheTop extends mixins(Mixin) {
   }
   @include media(m) {
     $title-width: 358.4px;
-    grid-template-columns: 1fr $title-width 1fr;
     margin-left: 0;
     h3 {
-      grid-column: 2 / 3;
       text-align: center;
     }
     h2 {
-      grid-column: 2 / 3;
+      width: $title-width;
+      text-align: left;
+      margin: 50px auto 0px auto;
     }
     .cursor {
-      margin-left: 50%;
-      left: -$title-width / 2;
+      position: absolute;
+      margin-left: calc((100% - 358.4px) / 2);
     }
     .rectangle {
       margin-left: 50%;
