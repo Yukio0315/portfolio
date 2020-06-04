@@ -18,7 +18,6 @@
     }
   }
   @include media(m) {
-    $height-menu: 100px;
     flex-direction: column-reverse;
     height: auto;
     width: 100vw;
@@ -27,7 +26,7 @@
     justify-content: center;
     align-items: center;
     .bar {
-      height: $height-menu;
+      height: $height-menu-mobile;
     }
   }
   &__open {

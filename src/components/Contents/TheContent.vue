@@ -92,12 +92,11 @@ export default class TheContent extends Vue {
       margin-right: 0;
       text-align: left;
       .body {
-        width: 100vw;
+        width: $width-mobile-main;
         h2 {
           margin: {
             top: 140px;
             bottom: 20px;
-            left: 50px;
           }
           font-size: 45px;
         }
