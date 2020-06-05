@@ -33,7 +33,13 @@ export default {
         href:
           'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap'
       },
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        rel: 'apple-touch-icon',
+        sizes: '180x180',
+        href: '/apple-touch-icon.png'
+      },
+      { rel: 'icon', type: 'image/png', href: '/android-chrome-384x384.png' }
     ]
   },
   /*
