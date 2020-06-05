@@ -21,8 +21,9 @@ export default class Footer extends Vue {}
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: {
-      right: $width-side;
+    margin-right: $width-side;
+    @include media(m) {
+      margin-right: 0px;
     }
     font-size: 15px;
     color: $color-bar;
