@@ -17,3 +17,11 @@ export type Account = {
   url: string
   name: string
 }
+
+export type Asset = {
+  sys: {
+    type: string
+    linkType: string
+    id: string
+  }
+}

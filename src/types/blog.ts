@@ -4,3 +4,10 @@ export type Blog = {
   pubDate: string
   url: string
 }
+
+export interface PostFeed {
+  title: string
+  thumbnail: string
+  pubDate: string
+  link: string
+}

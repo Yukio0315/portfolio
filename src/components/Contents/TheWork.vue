@@ -3,7 +3,7 @@
     <article v-for="work in works" :key="work.id" class="article">
       <div class="article-content">
         <h3>{{ work.title }}</h3>
-        <h4>{{ work.definitions }}</h4>
+        <h4>{{ work.definition }}</h4>
         <img class="image" :src="work.image" />
         <p>{{ work.body }}</p>
         <div class="article-content-footer">

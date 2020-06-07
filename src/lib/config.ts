@@ -1,5 +1,3 @@
-require('dotenv').config()
-
 export default {
   CTF_WORKS_TYPE_ID: process.env.CTF_WORKS_TYPE_ID,
   CTF_PROFILE_ENTRY_ID: process.env.CTF_PROFILE_ENTRY_ID,
