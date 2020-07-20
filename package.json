@@ -32,7 +32,7 @@
     "contentful-management": "^5.26.6",
     "fs-extra": "^9.0.0",
     "lax.js": "^1.2.5",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "moment-mini": "^2.24.0",
     "normalize.css": "^8.0.1",
     "nuxt": "^2.0.0",
